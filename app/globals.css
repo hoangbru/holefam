@@ -1,6 +1,6 @@
-
-/*=============== GOOGLE FONTS ===============*/
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 * {
   margin: 0;
@@ -107,14 +107,12 @@ body {
   background: url(/images/bg-1.jpg) no-repeat center;
   background-attachment: fixed;
   background-size: cover;
-  height: 100%;
 }
 
 .main {
   height: 100%;
   background: var(--background-color);
   color: var(--text-color);
-  font-family: var(--body-font);
   font-size: var(--normal-font-size);
 }
 
@@ -143,6 +141,12 @@ img {
   max-width: 100%;
   height: auto;
   object-fit: cover;
+}
+
+.ant-tooltip-inner {
+  border: none !important;
+  background-color: rgba(13, 29, 49, 1);
+  border-radius: 1rem;
 }
 
 /*=============== REUSABLE CSS CLASSES ===============*/
@@ -186,7 +190,7 @@ img {
   margin-right: auto;
 }
 
-.grid {
+.grid-gap {
   display: grid;
   gap: 1.5rem;
 }
