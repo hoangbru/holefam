@@ -61,13 +61,8 @@
 .footer__copy {
   display: block;
   margin-top: 4.5rem;
-  color: var(--text-color);
   text-align: center;
-  font-size: var(--normal-font-size);
   word-spacing: 2px;
-}
-
-.footer__copy span {
   color: var(--main-color);
   font-weight: var(--font-semi-bold);
   font-size: var(--normal-font-size);

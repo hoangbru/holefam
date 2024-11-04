@@ -1,8 +1,11 @@
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 import "./footer.css";
 
 export default function Footer() {
+  const t = useTranslations("HomePage");
+  const currentYear = new Date().getFullYear();
   const social = [
     { href: "https://www.facebook.com/tinhlinhxanh/", icon: "facebook" },
     { href: "https://www.instagram.com/tinhlinhxanh/", icon: "instagram" },
@@ -37,10 +40,9 @@ export default function Footer() {
           ))}
         </div>
         <p className="footer__copy">
-          &copy; 2024 Made & design by{" "}
-          <span>
-            <Link href="/#overview">holefam</Link>
-          </span>
+          <Link href="/#overview">
+            &copy; {currentYear} {t("footer.copyright", { author: "holefam" })}
+          </Link>
         </p>
       </div>
     </footer>

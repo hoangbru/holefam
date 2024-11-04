@@ -1,12 +1,15 @@
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 import styles from "./about.module.css";
 
 export default function About() {
+  const t = useTranslations("HomePage");
+
   return (
     <section className="section" id="about">
-      <h2 className="section__title">About Me</h2>
-      <span className="section__subtitle">Some infomation about me</span>
+      <h2 className="section__title">{t("about.title")}</h2>
+      <span className="section__subtitle">{t("about.subtitle")}</span>
 
       <div className={`${styles.about__container} container grid-gap`}>
         <Image
@@ -21,38 +24,31 @@ export default function About() {
           <div className={`${styles.about__info} grid-gap`}>
             <div className={styles.about__box}>
               <i className={`bx bx-user-circle ${styles.about__icon}`}></i>
-              <h3 className={styles.about__title}>Full name</h3>
+              <h3 className={styles.about__title}>{t("about.full_name")}</h3>
               <span className={styles.about__subtitle}>Phạm Việt Hoàng</span>
             </div>
 
             <div className={styles.about__box}>
               <i className={`bx bxs-graduation ${styles.about__icon}`}></i>
-              <h3 className={styles.about__title}>Education</h3>
+              <h3 className={styles.about__title}>{t("about.education")}</h3>
               <span className={styles.about__subtitle}>
-                University of Transport and Communitications
+                {t("about.school")}
               </span>
             </div>
 
             <div className={styles.about__box}>
               <i className={`bx bx-map ${styles.about__icon}`}></i>
-              <h3 className={styles.about__title}>Location</h3>
+              <h3 className={styles.about__title}>{t("about.location")}</h3>
               <span className={styles.about__subtitle}>
                 Cau Giay, Hanoi, Vietnam
               </span>
             </div>
           </div>
           <div className={styles.about__description}>
-            As a Front-end Web Developer with hands-on experience in building
-            professional web applications, I have a strong foundation in HTML,
-            CSS, JavaScript, and modern front-end frameworks such as React and
-            Vue.js. I am an active communicator with experience in teamwork and
-            problem-solving skills.
+            {t("about.description")}
           </div>
-          <a
-            href="#contact"
-            className="button button--flex"
-          >
-            Let&apos;s talk
+          <a href="#contact" className="button button--flex">
+            {t("about.let_us_talk")}
           </a>
         </div>
       </div>

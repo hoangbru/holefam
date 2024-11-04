@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import localFont from "next/font/local";
-
-import "./globals.css";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 import { Toaster } from "react-hot-toast";
 
+import "../globals.css";
+
+import { routing } from "@/i18n/routing";
+
 const fontRegular = localFont({
-  src: "./fonts/Montserrat.ttf",
+  src: "../fonts/Montserrat.ttf",
 });
 
 export const metadata: Metadata = {
@@ -38,13 +43,23 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function LocaleLayout({
   children,
-}: Readonly<{
+  params: { locale },
+}: {
   children: React.ReactNode;
-}>) {
+  params: { locale: string };
+}) {
+  // Ensure that the incoming `locale` is valid
+  if (!routing.locales.includes(locale as never)) {
+    notFound();
+  }
+
+  // Providing all messages to the client
+  // side is the easiest way to get started
+  const messages = await getMessages();
   return (
-    <html lang="en">
+    <html lang={locale}>
       <head>
         {/* UNICONS */}
         <link
@@ -58,8 +73,10 @@ export default function RootLayout({
         />
       </head>
       <body className={`${fontRegular.className}`}>
-        <Toaster />
-        {children}
+        <NextIntlClientProvider messages={messages}>
+          <Toaster />
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );

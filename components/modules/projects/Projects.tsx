@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 import styles from "./projects.module.css";
 
@@ -9,13 +10,13 @@ import { IProduct } from "@/interfaces/product";
 import { ITechnology } from "@/interfaces/technology";
 
 export default function Projects() {
+  const t = useTranslations("HomePage");
   const products: IProduct[] = [
     {
       id: 1,
       name: "QLtask",
       image: "/images/qltask.png",
-      description:
-        "Task management website, which is built based on the Trello use Next.js 14, PostgreSQL and Prisma",
+      description: t("projects.qltask"),
       link: "https://qltask.vercel.app/",
       linkGithub: "https://github.com/hoangbru/QLtask",
       technologies: [
@@ -45,8 +46,7 @@ export default function Projects() {
       id: 2,
       name: "easyFood",
       image: "/images/easyFood.png",
-      description:
-        "Graduation project with the participation of 7 team members, focusing on the development of an automated food ordering system named easyFood. The system enables automatic menu selection through QR codes. React + Typescript + Redux Toolkit is employed for the front-end, and PHP (Laravel framework) + MySQL is used for the back-end",
+      description: t("projects.easy_food"),
       link: "https://easyfood.firebbq.id.vn/",
       linkGithub: "",
       technologies: [
@@ -111,7 +111,7 @@ export default function Projects() {
             onClick={toggleReadMore}
             className="w-fit text-sm cursor-pointer text-blue-500 hover:underline"
           >
-            {isReadMore ? "Read More" : "Show Less"}
+            {t(isReadMore ? "projects.read_more" : "projects.show_less")}
           </span>
         )}
       </div>
@@ -182,16 +182,14 @@ export default function Projects() {
 
   return (
     <section className="section" id="projects">
-      <h2 className="section__title">Projects</h2>
-      <span className="section__subtitle">
-        The projects that I have completed
-      </span>
+      <h2 className="section__title">{t("projects.title")}</h2>
+      <span className="section__subtitle">{t("projects.subtitle")}</span>
 
       <div
         className={`${styles.projects__container} container grid-gap ${styles.projects__div}`}
       >
         {products?.length == 0 ? (
-          "No results."
+          t("projects.no_results")
         ) : (
           <>
             {products?.map((item: IProduct) => (

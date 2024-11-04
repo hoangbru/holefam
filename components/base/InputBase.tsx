@@ -1,28 +1,15 @@
-interface InputBaseProps {
-  className?: string;
+import { InputHTMLAttributes, forwardRef } from "react";
+
+interface InputBaseProps extends InputHTMLAttributes<HTMLInputElement> {
   id: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  placeholder?: string;
 }
 
-const InputBase: React.FC<InputBaseProps> = ({
-  className,
-  id,
-  value,
-  onChange,
-  placeholder,
-}) => {
-  return (
-    <input
-      className={className}
-      id={id}
-      name={id}
-      value={value}
-      onChange={onChange}
-      placeholder={placeholder}
-    />
-  );
-};
+const InputBase = forwardRef<HTMLInputElement, InputBaseProps>(
+  ({ id, ...props }, ref) => {
+    return <input id={id} ref={ref} {...props} />;
+  }
+);
+
+InputBase.displayName = "InputBase";
 
 export default InputBase;

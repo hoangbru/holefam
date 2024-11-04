@@ -1,11 +1,13 @@
 import { Fragment } from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 import styles from "./skills.module.css";
 
 import { ITechnology } from "@/interfaces/technology";
 
 export default function Skills() {
+  const t = useTranslations("HomePage");
   const technologies: ITechnology[] = [
     {
       id: 1,
@@ -100,11 +102,8 @@ export default function Skills() {
   ];
   return (
     <section className="section" id="skills">
-      <h2 className="section__title">My skills</h2>
-      <span className="section__subtitle">
-        These are the tools, languages, and technologies that I use to make my
-        product everyday
-      </span>
+      <h2 className="section__title">{t("skills.title")}</h2>
+      <span className="section__subtitle">{t("skills.subtitle")}</span>
 
       <div className={styles.skills__container}>
         <div className={styles.skills__content}>
@@ -129,7 +128,9 @@ export default function Skills() {
                             className={`bx bxl-${item.tag} ${styles.skills__icon}`}
                           ></i>
                         ) : (
-                          <div className={`relative ${styles.skills__icon} ${styles.image}`}>
+                          <div
+                            className={`relative ${styles.skills__icon} ${styles.image}`}
+                          >
                             <Image
                               src="/images/nextjs-icon.png"
                               alt="nextjs"

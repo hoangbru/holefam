@@ -1,19 +1,21 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { Tooltip } from "antd";
 
 import "./navigation.css";
 
 export default function Navigation() {
+  const t = useTranslations("HomePage");
   const [activeNav, setActiveNav] = useState("#overview");
 
   const navItems = [
-    { href: "#overview", title: "Overview", icon: "uil-estate" },
-    { href: "#about", title: "About", icon: "uil-user" },
-    { href: "#skills", title: "Skills", icon: "uil-setting" },
-    { href: "#projects", title: "Projects", icon: "uil-folder" },
-    { href: "#contact", title: "Contact", icon: "uil-comment" },
+    { href: "#overview", title: t("navigation.overview"), icon: "uil-estate" },
+    { href: "#about", title: t("navigation.about"), icon: "uil-user" },
+    { href: "#skills", title: t("navigation.skills"), icon: "uil-setting" },
+    { href: "#projects", title: t("navigation.projects"), icon: "uil-folder" },
+    { href: "#contact", title: t("navigation.contact"), icon: "uil-comment" },
   ];
 
   useEffect(() => {
