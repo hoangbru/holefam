@@ -77,7 +77,7 @@ export default function Projects() {
   const Paragraph = ({ text }: { text: string | undefined }) => {
     const [isReadMore, setIsReadMore] = useState(true);
     const [isLongText, setIsLongText] = useState(false);
-    const textRef = useRef(null);
+    const textRef = useRef<HTMLParagraphElement | null>(null);
 
     const toggleReadMore = () => {
       setIsReadMore(!isReadMore);
@@ -87,12 +87,14 @@ export default function Projects() {
       if (textRef.current) {
         const { scrollHeight } = textRef.current;
         const lineHeight = parseFloat(
-          getComputedStyle(textRef.current).lineHeight
+          getComputedStyle(textRef.current).lineHeight || "0"
         );
         const maxHeight = lineHeight * 2;
-        setIsLongText(scrollHeight > maxHeight);
+        if (scrollHeight > maxHeight !== isLongText) {
+          setIsLongText(scrollHeight > maxHeight);
+        }
       }
-    }, [text]);
+    }, [text, isLongText]);
 
     return (
       <div className="flex flex-col gap-[2px] justify-center mb-6">
@@ -109,7 +111,7 @@ export default function Projects() {
             onClick={toggleReadMore}
             className="w-fit text-sm cursor-pointer text-blue-500 hover:underline"
           >
-            {isReadMore ? " Read More" : " Show Less"}
+            {isReadMore ? "Read More" : "Show Less"}
           </span>
         )}
       </div>

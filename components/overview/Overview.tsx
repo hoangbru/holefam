@@ -49,7 +49,7 @@ export default function Overview() {
             >
               <a
                 href="/[Front_End_Developer]_PHAM_VIET_HOANG.pdf"
-                download="CV-Pham-Viet-Hoang.pdf"
+                download="[Front_End_Developer]_PHAM_VIET_HOANG.pdf"
                 className={`${styles.overview__resume} button button--flex`}
               >
                 My Resume
