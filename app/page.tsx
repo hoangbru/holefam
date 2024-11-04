@@ -1,13 +1,11 @@
 import {
   About,
   Contact,
-  Footer,
-  Navigation,
   Overview,
   Projects,
-  Scrollup,
   Skills,
-} from "@/components";
+} from "@/components/modules";
+import { Footer, Navigation, Scrollup } from "@/components/ui";
 
 export default function Home() {
   return (

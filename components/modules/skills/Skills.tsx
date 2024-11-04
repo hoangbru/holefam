@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import styles from "./skills.module.css";
 
-import { ITechnology } from "../../interface/technology";
+import { ITechnology } from "@/interfaces/technology";
 
 export default function Skills() {
   const technologies: ITechnology[] = [

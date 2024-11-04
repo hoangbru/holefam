@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 
 import "./globals.css";
+import { Toaster } from "react-hot-toast";
 
 const fontRegular = localFont({
   src: "./fonts/Montserrat.ttf",
@@ -56,7 +57,10 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={`${fontRegular.className}`}>{children}</body>
+      <body className={`${fontRegular.className}`}>
+        <Toaster />
+        {children}
+      </body>
     </html>
   );
 }

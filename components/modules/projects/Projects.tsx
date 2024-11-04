@@ -5,8 +5,8 @@ import Image from "next/image";
 
 import styles from "./projects.module.css";
 
-import { IProduct } from "../../interface/product";
-import { ITechnology } from "../../interface/technology";
+import { IProduct } from "@/interfaces/product";
+import { ITechnology } from "@/interfaces/technology";
 
 export default function Projects() {
   const products: IProduct[] = [
