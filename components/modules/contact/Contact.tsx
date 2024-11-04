@@ -66,14 +66,10 @@ export default function Contact() {
 
     if (isFormValid) {
       toast.success("Contact successfully");
-      console.log(forms);
     } else {
       toast.error("Something went wrong, please try again");
-      console.log(errors);
     }
   };
-
-  console.log(errors);
 
   return (
     <section className="section" id="contact">
