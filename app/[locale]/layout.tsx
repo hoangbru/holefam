@@ -1,8 +1,7 @@
-import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import localFont from "next/font/local";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, getTranslations } from "next-intl/server";
 import { Toaster } from "react-hot-toast";
 
 import "../globals.css";
@@ -13,35 +12,23 @@ const fontRegular = localFont({
   src: "../fonts/Montserrat.ttf",
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: "Portfolio of holefam",
-    template: "%s - Portfolio of holefam",
-  },
-  description: "holefam is a Front-end web dev from Hanoi",
-  alternates: {
-    canonical: process.env.NEXT_PUBLIC_BASE_URL,
-  },
-  openGraph: {
-    title: "Portfolio of holefam",
-    description: "holefam is a Front-end web dev from Hanoi",
-    url: process.env.NEXT_PUBLIC_BASE_URL,
-    images: [
-      {
-        url: "/images/behance.jpeg",
-        width: 800,
-        height: 600,
-        alt: "holefam",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Portfolio of holefam",
-    description: "holefam is a Front-end web dev from Hanoi",
-    images: ["/images/behance.jpeg"],
-  },
-};
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: never };
+}) {
+  const t = await getTranslations({ locale, namespace: "Metadata" });
+  return {
+    title: t("title"),
+    description: t("description"),
+    alternates: {
+      canonical: process.env.NEXT_PUBLIC_BASE_URL,
+    },
+    twitter: {
+      card: "summary_large_image",
+    },
+  };
+}
 
 export default async function LocaleLayout({
   children,

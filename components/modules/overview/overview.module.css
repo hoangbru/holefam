@@ -103,6 +103,10 @@
 
 /* For large devices */
 @media screen and (max-width: 992px) {
+  .overview__container {
+    padding: 0 1rem;
+  }
+  
   .overview__content {
     grid-template-columns: 100px repeat(2, 1fr);
     column-gap: 0.5rem;
@@ -121,9 +125,6 @@
 
 /* For medium devices */
 @media screen and (max-width: 768px) {
-  .overview__container {
-    padding: 0 1rem;
-  }
   .overview__content {
     grid-template-columns: 0.5fr 3fr;
     padding-top: 2.5rem;
