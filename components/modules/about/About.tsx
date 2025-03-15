@@ -8,11 +8,16 @@ export default function About() {
 
   return (
     <section className="section" id="about">
-      <h2 className="section__title">{t("about.title")}</h2>
-      <span className="section__subtitle">{t("about.subtitle")}</span>
+      <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+        <h2 className="section__title">{t("about.title")}</h2>
+        <span className="section__subtitle">{t("about.subtitle")}</span>
+      </div>
 
       <div className={`${styles.about__container} container grid-gap`}>
         <Image
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="200"
           src={"/images/me.jpeg"}
           alt="holefam-image"
           width={350}
@@ -22,13 +27,23 @@ export default function About() {
 
         <div className={styles.about__data}>
           <div className={`${styles.about__info} grid-gap`}>
-            <div className={styles.about__box}>
+            <div
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-delay="100"
+              className={styles.about__box}
+            >
               <i className={`bx bx-user-circle ${styles.about__icon}`}></i>
               <h3 className={styles.about__title}>{t("about.full_name")}</h3>
               <span className={styles.about__subtitle}>Phạm Việt Hoàng</span>
             </div>
 
-            <div className={styles.about__box}>
+            <div
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-delay="200"
+              className={styles.about__box}
+            >
               <i className={`bx bxs-graduation ${styles.about__icon}`}></i>
               <h3 className={styles.about__title}>{t("about.education")}</h3>
               <span className={styles.about__subtitle}>
@@ -36,7 +51,12 @@ export default function About() {
               </span>
             </div>
 
-            <div className={styles.about__box}>
+            <div
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-delay="300"
+              className={styles.about__box}
+            >
               <i className={`bx bx-map ${styles.about__icon}`}></i>
               <h3 className={styles.about__title}>{t("about.location")}</h3>
               <span className={styles.about__subtitle}>
@@ -44,10 +64,21 @@ export default function About() {
               </span>
             </div>
           </div>
-          <div className={styles.about__description}>
+          <div
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="200"
+            className={styles.about__description}
+          >
             {t("about.description")}
           </div>
-          <a href="#contact" className="button button--flex">
+          <a
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="200"
+            href="#contact"
+            className="button button--flex"
+          >
             {t("about.let_us_talk")}
           </a>
         </div>

@@ -102,11 +102,18 @@ export default function Skills() {
   ];
   return (
     <section className="section" id="skills">
-      <h2 className="section__title">{t("skills.title")}</h2>
-      <span className="section__subtitle">{t("skills.subtitle")}</span>
+      <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+        <h2 className="section__title">{t("skills.title")}</h2>
+        <span className="section__subtitle">{t("skills.subtitle")}</span>
+      </div>
 
       <div className={styles.skills__container}>
-        <div className={styles.skills__content}>
+        <div
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="200"
+          className={styles.skills__content}
+        >
           <div className={styles.skills__box}>
             {technologies.length === 0 ? (
               "No results."
@@ -115,8 +122,11 @@ export default function Skills() {
                 {technologies.map((item: ITechnology) => {
                   return (
                     <div
-                      className={`${styles.skills__data} flex flex-col justify-center items-center`}
                       key={item.id}
+                      data-aos="fade-up"
+                      data-aos-duration="1000"
+                      data-aos-delay="200"
+                      className={`${styles.skills__data} flex flex-col justify-center items-center`}
                     >
                       <a
                         href={item.link}

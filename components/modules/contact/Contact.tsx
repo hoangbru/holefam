@@ -84,10 +84,12 @@ export default function Contact() {
 
   return (
     <section className="section" id="contact">
-      <h2 className="section__title">{t("HomePage.contact.title")}</h2>
-      <span className="section__subtitle">
-        {t("HomePage.contact.subtitle")}
-      </span>
+      <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+        <h2 className="section__title">{t("HomePage.contact.title")}</h2>
+        <span className="section__subtitle">
+          {t("HomePage.contact.subtitle")}
+        </span>
+      </div>
       <div className={`${styles.contact__container} container grid-gap`}>
         <div className={styles.contact__content}>
           <form
@@ -95,7 +97,12 @@ export default function Contact() {
             ref={formRef}
             onSubmit={handleSubmitContact}
           >
-            <div className={styles.contact__form_group}>
+            <div
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-delay="100"
+              className={styles.contact__form_group}
+            >
               <label htmlFor="name" className={styles.contact__form_tag}>
                 {errors.name ? (
                   <span className="text-red-500">{errors.name}</span>
@@ -112,7 +119,13 @@ export default function Contact() {
                 placeholder={t("HomePage.contact.insert_your_name")}
               />
             </div>
-            <div className={styles.contact__form_group}>
+
+            <div
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-delay="200"
+              className={styles.contact__form_group}
+            >
               <label htmlFor="email" className={styles.contact__form_tag}>
                 {errors.email ? (
                   <span className="text-red-500">{errors.email}</span>
@@ -132,7 +145,11 @@ export default function Contact() {
                 placeholder={t("HomePage.contact.insert_your_email")}
               />
             </div>
+
             <div
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-delay="300"
               className={`${styles.contact__form_group} ${styles.contact__form_area}`}
             >
               <label htmlFor="message" className={styles.contact__form_tag}>
@@ -154,6 +171,9 @@ export default function Contact() {
               />
             </div>
             <button
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-delay="400"
               type="submit"
               className={`button button--flex ${styles.contact__form_send}`}
             >

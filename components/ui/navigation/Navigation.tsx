@@ -44,7 +44,12 @@ export default function Navigation() {
 
   return (
     <header className="header">
-      <nav className="nav container">
+      <nav
+        data-aos="fade-left"
+        data-aos-offset="500"
+        data-aos-delay="100"
+        className="nav container"
+      >
         <div className="nav__menu">
           <ul className="nav__list">
             {navItems.map((item) => (

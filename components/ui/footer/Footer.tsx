@@ -29,6 +29,9 @@ export default function Footer() {
         <div className="footer__external">
           {social.map(({ href, icon }) => (
             <a
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-delay="200"
               key={href}
               href={href}
               className="footer__external_link"

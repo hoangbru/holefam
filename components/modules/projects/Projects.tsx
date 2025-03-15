@@ -1,16 +1,15 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 import styles from "./projects.module.css";
 
 import { IProduct } from "@/interfaces/product";
-import { ITechnology } from "@/interfaces/technology";
+import ProjectCard from "./ProjectCard";
 
 export default function Projects() {
   const t = useTranslations("HomePage");
+
   const products: IProduct[] = [
     {
       id: 1,
@@ -74,116 +73,12 @@ export default function Projects() {
     },
   ];
 
-  const Paragraph = ({ text }: { text: string | undefined }) => {
-    const [isReadMore, setIsReadMore] = useState(true);
-    const [isLongText, setIsLongText] = useState(false);
-    const textRef = useRef<HTMLParagraphElement | null>(null);
-
-    const toggleReadMore = () => {
-      setIsReadMore(!isReadMore);
-    };
-
-    useEffect(() => {
-      if (textRef.current) {
-        const { scrollHeight } = textRef.current;
-        const lineHeight = parseFloat(
-          getComputedStyle(textRef.current).lineHeight || "0"
-        );
-        const maxHeight = lineHeight * 2;
-        if (scrollHeight > maxHeight !== isLongText) {
-          setIsLongText(scrollHeight > maxHeight);
-        }
-      }
-    }, [text, isLongText]);
-
-    return (
-      <div className="flex flex-col gap-[2px] justify-center mb-6">
-        <p
-          ref={textRef}
-          className={`${styles.projects__description} ${
-            isReadMore ? "read-more" : "read-more expanded"
-          }`}
-        >
-          {text}
-        </p>
-        {isLongText && (
-          <span
-            onClick={toggleReadMore}
-            className="w-fit text-sm cursor-pointer text-blue-500 hover:underline"
-          >
-            {t(isReadMore ? "projects.read_more" : "projects.show_less")}
-          </span>
-        )}
-      </div>
-    );
-  };
-
-  const Technologies = ({ techs }: { techs: ITechnology[] }) => {
-    return (
-      <div className={styles.projects__tag}>
-        {techs.map((item: ITechnology) => {
-          return (
-            <div key={item.id}>
-              {item.tag ? (
-                <i
-                  className={`bx bxl-${item.tag} ${styles.projects__tag_icon}`}
-                ></i>
-              ) : (
-                <div
-                  className={`relative ${styles.projects__tag_icon} ${styles.project__tag_image}`}
-                >
-                  <Image
-                    src="/images/nextjs-icon.png"
-                    alt="nextjs"
-                    style={{ color: "rgba(55, 159, 200, 1)" }}
-                    fill
-                  />
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
-    );
-  };
-
-  const ActionButton = ({
-    link,
-    linkGithub,
-  }: {
-    link: string | undefined;
-    linkGithub: string | undefined;
-  }) => {
-    return (
-      <div className={styles.projects__button}>
-        <a
-          href={link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.projects__button_demo}
-        >
-          <i className="bx bx-link-external"></i>
-          Demo
-        </a>
-        {linkGithub && (
-          <a
-            href={linkGithub}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.projects__button_github}
-          >
-            <i className="bx bxl-github"></i>
-            Github
-          </a>
-        )}
-      </div>
-    );
-  };
-
   return (
     <section className="section" id="projects">
-      <h2 className="section__title">{t("projects.title")}</h2>
-      <span className="section__subtitle">{t("projects.subtitle")}</span>
+      <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+        <h2 className="section__title">{t("projects.title")}</h2>
+        <span className="section__subtitle">{t("projects.subtitle")}</span>
+      </div>
 
       <div
         className={`${styles.projects__container} container grid-gap ${styles.projects__div}`}
@@ -192,22 +87,8 @@ export default function Projects() {
           t("projects.no_results")
         ) : (
           <>
-            {products?.map((item: IProduct) => (
-              <div className={styles.projects__card} key={item.id}>
-                <Image
-                  src={item.image || ""}
-                  alt={`projects-${item.name}`}
-                  width={400}
-                  height={250}
-                  className={styles.projects__img}
-                />
-                <div className={styles.projects__content}>
-                  <h3 className={styles.projects__title}>{item.name}</h3>
-                  <Paragraph text={item.description} />
-                  <Technologies techs={item.technologies} />
-                  <ActionButton link={item.link} linkGithub={item.linkGithub} />
-                </div>
-              </div>
+            {products?.map((item: IProduct, index: number) => (
+              <ProjectCard key={index} project={item} />
             ))}
           </>
         )}
