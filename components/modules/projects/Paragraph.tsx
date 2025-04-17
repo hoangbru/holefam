@@ -35,7 +35,7 @@ const Paragraph = ({ text }: { text: string | undefined }) => {
           isReadMore ? "read-more" : "read-more expanded"
         }`}
       >
-        {text}
+        {t(text)}
       </p>
       {isLongText && (
         <span

@@ -1,6 +1,6 @@
 import { ITechnology } from "./technology";
 
-export interface IProduct {
+export interface IProject {
   id: string | number;
   name: string;
   image?: string;

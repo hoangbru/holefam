@@ -1,4 +1,4 @@
-import { ITechnology } from "@/interfaces/technology";
+import { ITechnology } from "@/types/technology";
 
 import styles from "./projects.module.css";
 import Image from "next/image";

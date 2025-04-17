@@ -7,12 +7,12 @@ export default function Footer() {
   const t = useTranslations("HomePage");
   const currentYear = new Date().getFullYear();
   const social = [
-    { href: "https://www.facebook.com/tinhlinhxanh/", icon: "facebook" },
-    { href: "https://www.instagram.com/tinhlinhxanh/", icon: "instagram" },
+    { href: "https://www.facebook.com/phuthuybachtang/", icon: "facebook" },
+    { href: "https://www.instagram.com/phuthuybachtang/", icon: "instagram" },
     { href: "https://www.linkedin.com/in/viethoangdev/", icon: "linkedin" },
     { href: "https://t.me/plousdolby", icon: "telegram" },
     { href: "https://x.com/tinhlinh_xanh", icon: "twitter" },
-    { href: "https://discord.gg/T5tzGZ6Uhg", icon: "discord-alt" },
+    { href: "https://discord.gg/ScVz295b", icon: "discord-alt" },
     { href: "https://www.figma.com/@hoangbru", icon: "figma" },
     {
       href: "https://open.spotify.com/user/31bv5pxmueupktotevqtnngczgvy",

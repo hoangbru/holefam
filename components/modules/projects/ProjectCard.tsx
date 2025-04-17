@@ -9,10 +9,10 @@ import ActionButtons from "./ActionButtons";
 import Paragraph from "./Paragraph";
 import Technologies from "./Technologies";
 
-import { IProduct } from "@/interfaces/product";
+import { IProject } from "@/types/project";
 
 type ProjectCardProps = {
-  project: IProduct;
+  project: IProject;
 };
 
 const ProjectCard: FC<ProjectCardProps> = ({ project }) => {
