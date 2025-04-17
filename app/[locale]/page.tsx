@@ -1,8 +1,3 @@
-"use client";
-
-import AOS from "aos";
-import "aos/dist/aos.css";
-
 import {
   About,
   Contact,
@@ -11,21 +6,24 @@ import {
   Skills,
 } from "@/components/modules";
 import { Footer, Navigation, Scrollup } from "@/components/ui";
-import { useEffect } from "react";
 
-export default function Home() {
-  useEffect(() => {
-    AOS.init({ duration: 1000 });
-  }, []);
-  
+import { getProjects } from "@/actions/getProjects";
+import { getTechnologies } from "@/actions/getTechnologies";
+
+export default async function Home() {
+  const [projects, technologies] = await Promise.all([
+    getProjects(),
+    getTechnologies(),
+  ]);
+
   return (
     <div className="background-image">
       <div className="main">
         <Navigation />
         <Overview />
         <About />
-        <Skills />
-        <Projects />
+        <Skills technologies={technologies} />
+        <Projects projects={projects} />
         <Contact />
         <Footer />
         <Scrollup />

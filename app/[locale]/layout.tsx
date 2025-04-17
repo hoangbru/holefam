@@ -2,11 +2,11 @@ import { notFound } from "next/navigation";
 import localFont from "next/font/local";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
-import { Toaster } from "react-hot-toast";
 
 import "../globals.css";
 
 import { routing } from "@/i18n/routing";
+import AppProvider from "@/providers/AppProvider";
 
 const fontRegular = localFont({
   src: "../fonts/Montserrat.ttf",
@@ -37,13 +37,11 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  // Ensure that the incoming `locale` is valid
   if (!routing.locales.includes(locale as never)) {
     notFound();
   }
 
   // Providing all messages to the client
-  // side is the easiest way to get started
   const messages = await getMessages();
   return (
     <html lang={locale}>
@@ -61,8 +59,7 @@ export default async function LocaleLayout({
       </head>
       <body className={`${fontRegular.className}`}>
         <NextIntlClientProvider messages={messages}>
-          <Toaster />
-          {children}
+          <AppProvider>{children}</AppProvider>
         </NextIntlClientProvider>
       </body>
     </html>
