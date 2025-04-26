@@ -1,9 +1,8 @@
-export interface ITechnology {
-  id: string | number;
+export interface Technology {
+  id: number;
   name: string;
   tag?: string;
   link?: string;
-  projects?: [];
-  createdAt?: Date;
-  updateAt?: Date;
+  createdAt: Date;
+  updateAt: Date;
 }

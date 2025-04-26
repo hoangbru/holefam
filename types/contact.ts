@@ -1,7 +1,9 @@
-export interface IContact {
-  name?: string;
+export interface Contact {
+  id: number;
+  name: string;
   email: string;
-  message?: string;
-  createdAt?: Date;
-  updateAt?: Date;
+  phone: string;
+  message: string;
+  createdAt: Date;
+  updateAt: Date;
 }

@@ -1,0 +1,20 @@
+[
+  {
+    "id": 2,
+    "email": "user@example.com",
+    "password": "$2b$10$examplehashedpassword",
+    "role": "user"
+  },
+  {
+    "id": 3,
+    "email": "hoangbru07@gmail.com",
+    "password": "$2b$10$Nk.61o7d5banKrejthf7LeS.LDD01ZWGkZQlFU6uBdRHkPstHgDcm",
+    "role": "admin"
+  },
+  {
+    "id": 4,
+    "email": "viethoang@gmail.com",
+    "password": "$2b$10$GuJqjT5CXVTRNnBCzKHUp.0ljvd7k9lneJpy9l7gwwJA24INRNDYO",
+    "role": "admin"
+  }
+]

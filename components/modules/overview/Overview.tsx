@@ -59,7 +59,7 @@ export default function Overview() {
           <div className="relative w-10 h-6">
             <Image
               src={"/images/flag/vietnam.webp"}
-              alt="flag of Vietnam"
+              alt="flag of Viet Nam"
               fill
               className="object-cover"
             />
@@ -100,7 +100,7 @@ export default function Overview() {
             data-aos-easing="ease-in-sine"
             className={`${styles.overview__img} bg-cover bg-center`}
             style={{
-              backgroundImage: `url(/images/hi.jpeg)`,
+              backgroundImage: `url(/images/flag-mtdtgpmnvn.jpg)`,
             }}
           ></div>
 

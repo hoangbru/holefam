@@ -1,13 +1,13 @@
-import { ITechnology } from "./technology";
+import { Technology } from "./technology";
 
-export interface IProject {
-  id: string | number;
+export interface Project {
+  id: number;
   name: string;
-  image?: string;
-  description?: string;
-  link?: string;
+  image: string;
+  description: string;
+  link: string;
   linkGithub?: string;
-  technologies: ITechnology[];
+  technologies: Technology[];
   createdAt?: Date;
   updateAt?: Date;
 }

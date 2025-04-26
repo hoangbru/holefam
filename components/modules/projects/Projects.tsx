@@ -1,19 +1,30 @@
 "use client";
 
-import { FC } from "react";
 import { useTranslations } from "next-intl";
 
 import styles from "./projects.module.css";
 
-import { IProject } from "@/types/project";
+import { Project } from "@/types/project";
 import ProjectCard from "./ProjectCard";
+import { useEffect, useState } from "react";
+import { fetcher } from "@/utils/fetcher";
 
-type ProjectsProps = {
-  projects: IProject[];
-};
-
-const Projects: FC<ProjectsProps> = ({ projects }) => {
+const Projects = () => {
   const t = useTranslations("HomePage");
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchProjects() {
+      try {
+        const data = await fetcher('/api/projects');
+        setProjects(data);
+      } catch  {
+        setError('Failed to fetch projects');
+      }
+    }
+    fetchProjects();
+  }, []);
 
   return (
     <section className="section" id="projects">
@@ -22,6 +33,7 @@ const Projects: FC<ProjectsProps> = ({ projects }) => {
         <span className="section__subtitle">{t("projects.subtitle")}</span>
       </div>
 
+      {error && <p className="text-red-500 mb-4">{error}</p>}
       <div
         className={`${styles.projects__container} container grid-gap ${styles.projects__div}`}
       >
@@ -29,7 +41,7 @@ const Projects: FC<ProjectsProps> = ({ projects }) => {
           t("projects.no_results")
         ) : (
           <>
-            {projects?.map((item: IProject, index: number) => (
+            {projects?.map((item: Project, index: number) => (
               <ProjectCard key={index} project={item} />
             ))}
           </>

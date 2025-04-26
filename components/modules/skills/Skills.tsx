@@ -1,17 +1,29 @@
-import { FC, Fragment } from "react";
+"use client";
+
+import { Fragment, useEffect, useState } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 import styles from "./skills.module.css";
+import { Technology } from "@/types/technology";
+import { fetcher } from "@/utils/fetcher";
 
-import { ITechnology } from "@/types/technology";
-
-type SkillsProps = {
-  technologies: ITechnology[];
-};
-
-const Skills: FC<SkillsProps> = ({ technologies }) => {
+const Skills = () => {
   const t = useTranslations("HomePage");
+  const [technologies, setTechnologies] = useState<Technology[]>([]);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function fetchTechnologies() {
+      try {
+        const data = await fetcher("/api/technologies");
+        setTechnologies(data);
+      } catch {
+        setError("Failed to fetch technologies");
+      }
+    }
+    fetchTechnologies();
+  }, []);
 
   return (
     <section className="section" id="skills">
@@ -20,6 +32,7 @@ const Skills: FC<SkillsProps> = ({ technologies }) => {
         <span className="section__subtitle">{t("skills.subtitle")}</span>
       </div>
 
+      {error && <p className="text-red-500 mb-4">{error}</p>}
       <div className={styles.skills__container}>
         <div
           data-aos="fade-up"
@@ -32,7 +45,7 @@ const Skills: FC<SkillsProps> = ({ technologies }) => {
               "No results."
             ) : (
               <Fragment>
-                {technologies.map((item: ITechnology) => {
+                {technologies.map((item: Technology) => {
                   return (
                     <div
                       key={item.id}

@@ -60,7 +60,7 @@ export default function About() {
               <i className={`bx bx-map ${styles.about__icon}`}></i>
               <h3 className={styles.about__title}>{t("about.location")}</h3>
               <span className={styles.about__subtitle}>
-                Cau Giay, Hanoi, Vietnam
+                Cau Giay, Hanoi, Viet Nam
               </span>
             </div>
           </div>
